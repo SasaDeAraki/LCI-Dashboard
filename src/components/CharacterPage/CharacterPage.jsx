@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import CharacterPanel from "./CharacterPanel";
+import CharacterPanel from "../CharacterPanel/CharacterPanel";
 
 export default function CharacterPage() {
     const { characterId } = useParams();

@@ -1,0 +1,9 @@
+.character-portrait {
+    transition: transform 0.3s ease-in-out;
+    image-rendering: auto;
+    will-change: transform;
+}
+
+.character-portrait:hover{
+    transform: scale(1.02);
+}

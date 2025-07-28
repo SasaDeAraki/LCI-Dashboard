@@ -1,16 +1,23 @@
+import "./App.css"
 import { Link } from "react-router-dom"
-import CharacterPanel from "./components/CharacterPanel"
+import TextType from "./components/TextType/TextType"
+import { Color } from "ogl"
+import CharacterPortrait from "./components/CharacterPortrait/CharacterPortrait"
+import portraitBuzz from "./assets/images/buzz.png"
+import portraitFestor from "./assets/images/festor.png"
+import portraitRenna from "./assets/images/renna.png"
+import portraitTrex from "./assets/images/trex.png"
+import portraitZe from "./assets/images/ze.png"
+
 
 function App() {
   return (
-    <div>
-      <ul>
-        <li><Link to={"/buzz"}>Ver Buzz</Link></li>
-        <li><Link to={"/festor"}>Ver Festor</Link></li>
-        <li><Link to={"/renna"}>Ver Renna</Link></li>
-        <li><Link to={"/trex"}>Ver Trex</Link></li>
-        <li><Link to={"/ze"}>Ver Zé</Link></li>
-      </ul>
+    <div className="characters-container">
+      <Link to="/buzz"><CharacterPortrait imgPersonagem={ portraitBuzz } /></Link>
+      <Link to="/festor"><CharacterPortrait imgPersonagem={ portraitFestor } /></Link>
+      <Link to="/renna"><CharacterPortrait imgPersonagem={ portraitRenna } /></Link>
+      <Link to="/trex"><CharacterPortrait imgPersonagem={ portraitTrex } /></Link>
+      <Link to="/ze"><CharacterPortrait imgPersonagem={ portraitZe } /></Link>
     </div>
   )
 }

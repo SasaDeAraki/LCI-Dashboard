@@ -1,0 +1,7 @@
+.characters-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    margin: auto 180px;
+}
