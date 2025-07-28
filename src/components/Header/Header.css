@@ -1,0 +1,116 @@
+header {
+    display: flex;
+    width: 100%;
+    background-color: white;
+    border-bottom: 2px solid black;
+    margin: 0;
+    padding: 0;
+    padding-top: 70px;
+    padding-bottom: 4px;
+    position: absolute;
+}
+
+header h2, h3 {
+    font-weight: 400;
+}
+
+.botao-header {
+    display: flex;
+    margin-top: auto;
+    margin-bottom: 0.5rem;
+}
+
+.botao-header img:hover {
+    cursor: pointer;
+}
+
+.header-character {
+    line-height: 0;
+    margin-top: auto;
+}
+
+.header-character h2 {
+    margin: 0;
+    line-height: 0.9;
+}
+
+.header-character img {
+    pointer-events: none;
+    user-select: none;
+}
+
+.header-flavor {
+    display: flex;
+    margin-top: auto;
+}
+
+.header-flavor h3 {
+    margin: 0;
+    margin-top: auto;
+    white-space: nowrap;
+    margin-right: 4px;
+}
+
+.header-character img {
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    opacity: 0.85;
+}
+
+.decoration-bar {
+    background-color: #FF8B25;
+    height: 13px;
+    width: 530px;
+    margin: auto;
+}
+
+.header-portrait img {
+    width: 244px;
+    height: 244px;
+    margin: 0;
+    position: absolute;
+    transform: translate(80%, -30%);
+}
+
+.giro-loop {
+    animation: girar 22s linear infinite;
+}
+
+@keyframes girar {
+    0% {
+        transform: translate(-23.5%, -70%) rotate(0deg);
+        filter: blur(0px);
+    }
+    24% {
+        filter: blur(0px);
+    }
+    25% {
+        filter: blur(1.5px);
+    }
+    40% {
+        filter: blur(0.8px);
+    }
+    59% {
+        filter: blur(0.6px);
+    }
+    60% {
+        filter: blur(0px);
+    }
+    65% {
+        filter: blur(0.5px);
+    }
+    74% {
+        filter: blur(0.45px);
+    }
+    75% {
+        filter: blur(1.6px);
+    }
+    90% {
+        filter: blur(0.8px);
+    }
+    100% {
+        transform: translate(-23.5%, -70%) rotate(360deg);
+        filter: blur(0px);
+    }
+}

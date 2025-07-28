@@ -1,0 +1,65 @@
+.character-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.hp-structure-container {
+    display: flex;
+    font-size: 48px;
+}
+
+.hp-structure-container button {
+    background: none;
+    border: none;
+    font-size: 40px;
+    font-weight: 800;
+}
+
+.hp-container {
+    display: flex;
+}
+
+.hp-container img {
+    width: 60px;
+    height: 60px;   
+}
+
+.hp-controls {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hp-controls div {
+    display: flex;
+    gap: 8px;
+}
+
+.hp-controls button {
+    background: none;
+    border: none;
+    font-size: 32px;
+    font-weight: 800;
+    color: #7fa875;
+}
+
+.hp-controls button:hover {
+    cursor: pointer;
+}
+
+.hp-bar-wrapper {
+    width: 700px;
+    height: 13px;
+    background-color: #dddddd;
+    border: none;
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.hp-bar {
+    height: 100%;
+    background-color: #26BC00;
+    transition: width 0.1s ease-in-out;
+}
+

@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { db } from "../../firebase";
 import { ref, get, set, onValue } from "firebase/database";
+import "./CharacterPanel.css"
+import StructureIcon from "../../assets/images/Structure.png"
 
 export default function CharacterPanel({ characterId }) {
     const [stats, setStats] = useState({
@@ -18,7 +20,7 @@ export default function CharacterPanel({ characterId }) {
     useEffect(() => {
         const statsRef = ref(db, `characters/${characterId}`);
         const unsubscribe = onValue(statsRef, (snapshot) => {
-            if (snapshot.exists()) {
+            if (snapshot.exists()) { 
                 setStats(snapshot.val());
             }
         });
@@ -26,26 +28,67 @@ export default function CharacterPanel({ characterId }) {
         return () => unsubscribe();
     }, [characterId]);
 
-    // Atualizar valor 
-    const handleChange = (field, value) => {
-        const newStats = { ...stats, [field]: Number(value) };
+    const updateStats = (newStats) => {
         setStats(newStats);
-        set(ref(db, `characters/${characterId}`), newStats);
+        set(ref(db, `characters/${characterId}`), newStats)
     };
 
+    const changeHP = (delta) => {
+        let newHP = stats.current_hp + delta;
+        let newStructure = stats.structure;
+
+        if (newHP <= 0) {
+            if (newStructure > 0) {
+                newStructure -= 1;
+
+                const overflow = Math.abs(newHP);
+                newHP = stats.max_hp - overflow;
+
+                if (newHP < 0) newHP = 0;
+            } else {
+                newHP = 0;
+            } 
+        } else if (newHP > stats.max_hp) {
+                newHP = stats.max_hp;
+        }
+
+        updateStats({ ...stats, current_hp: newHP, structure: newStructure })
+    };
+
+    const changeStructure = (delta) => {
+        const newStructure = Math.min(4, Math.max(0, stats.structure + delta));
+        updateStats({ ...stats, structure: newStructure });
+    };
+
+    const hpPercent = stats.max_hp > 0 ? (stats.current_hp / stats.max_hp) * 100 : 0;
+
     return (
-        <div>
-            <h2>{characterId.toUpperCase()}</h2>
-            {["current_hp", "current_heat", "structure", "stress", "max_hp", "max_heat", "char_current_hp", "char_max_hp"].map((field) => (
-                <div key={field}>
-                    <label>{field.toUpperCase()}: </label>
-                    <input 
-                        type="number"
-                        value={stats[field]}
-                        onChange={(e) => handleChange(field, e.target.value)}
-                    />
+        <div className="character-panel">
+            <div className="hp-structure-container">
+                <div>
+                    <button onClick={() => changeStructure(-1)}>-</button>
+                    <span>[{stats.structure}/4]</span>
+                    <button onClick={() => changeStructure(1)}>+</button>
                 </div>
-            ))}
+                <div className="hp-container">
+                    <img src={StructureIcon} /> 
+                    <div>
+                        <div className="hp-controls">
+                            <span>HP:</span>
+                            <div>
+                                <button onClick={() => changeHP(-5)}>-5</button>
+                                <button onClick={() => changeHP(-1)}>-</button>
+                                <span>{stats.current_hp}/{stats.max_hp}</span>
+                                <button onClick={() => changeHP(1)}>+</button>
+                                <button onClick={() => changeHP(5)}>+5</button>
+                            </div>
+                        </div>
+                        <div className="hp-bar-wrapper">
+                            <div className="hp-bar" style={{ width: `${hpPercent}%` }}></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

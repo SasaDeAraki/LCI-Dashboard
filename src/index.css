@@ -1,3 +1,15 @@
+@font-face {
+  font-family: 'Epkaisho';
+  src: url('./assets/fonts/EPKAISHO.woff') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+    font-family: 'Epkaisho', sans-serif;
+}
+
 body {
   margin: 0;
   padding: 0;

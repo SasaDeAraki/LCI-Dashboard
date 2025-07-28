@@ -1,7 +1,5 @@
 import "./App.css"
 import { Link } from "react-router-dom"
-import TextType from "./components/TextType/TextType"
-import { Color } from "ogl"
 import CharacterPortrait from "./components/CharacterPortrait/CharacterPortrait"
 import portraitBuzz from "./assets/images/buzz.png"
 import portraitFestor from "./assets/images/festor.png"
