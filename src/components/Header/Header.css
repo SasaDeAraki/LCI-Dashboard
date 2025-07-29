@@ -59,7 +59,6 @@ header h2, h3 {
 }
 
 .decoration-bar {
-    background-color: #FF8B25;
     height: 13px;
     width: 530px;
     margin: auto;
@@ -70,7 +69,8 @@ header h2, h3 {
     height: 244px;
     margin: 0;
     position: absolute;
-    transform: translate(80%, -30%);
+    right: 30px;
+    top: 0;
 }
 
 .giro-loop {

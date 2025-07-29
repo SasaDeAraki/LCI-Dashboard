@@ -8,7 +8,16 @@ import portraitRenna from "../../assets/images/renna.png"
 import portraitTrex from "../../assets/images/trex.png"
 import portraitZe from "../../assets/images/ze.png"
 
-export default function Header({ characterId }) {
+
+export default function Header({ characterId, characterData }) {
+    const portraits = {
+        buzz: portraitBuzz,
+        festor: portraitFestor,
+        renna: portraitRenna,
+        trex: portraitTrex,
+        ze: portraitZe,
+    }
+
     return (
         <header>
             <div className="botao-header">
@@ -20,11 +29,11 @@ export default function Header({ characterId }) {
                 <img src={ elipse } className="giro-loop" />
             </div>
             <div className="header-flavor">
-                <h3 style={{ fontSize: '48px' }}># Long-range Specialist</h3>
-                <div className="decoration-bar"></div>
+                <h3 style={{ fontSize: '48px' }}># {characterData.flavor.toUpperCase()}</h3>
+                <div className="decoration-bar" style={{ backgroundColor: `${characterData.cor}` }}></div>
             </div>
             <div className="header-portrait">
-                <img src={portraitBuzz} />
+                <img src={portraits[characterId]} alt={characterId} />
             </div>
         </header>
     )
