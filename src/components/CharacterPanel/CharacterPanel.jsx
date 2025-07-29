@@ -5,6 +5,8 @@ import "./CharacterPanel.css"
 import StructureIcon from "../../assets/images/Structure.png"
 import StressIcon from "../../assets/images/Stress.png"
 import EditIcon from "../../assets/images/edit.png"
+import Gauss1 from "../../assets/images/gauss-1.png"
+import Gauss2 from "../../assets/images/gauss-2.png"
 import { AnimatePresence, motion } from 'framer-motion'
 
 export default function CharacterPanel({ characterId }) {
@@ -227,7 +229,7 @@ export default function CharacterPanel({ characterId }) {
                 {editingField && (
                     <div
                         className="modal-overlay"
-                        onClick={() => setEditingField(null)} // Fecha ao clicar fora
+                        onClick={() => setEditingField(null)} 
                         style={{
                         position: 'fixed',
                         inset: 0,
@@ -240,7 +242,7 @@ export default function CharacterPanel({ characterId }) {
                     >
                         <div
                         className="modal"
-                        onClick={(e) => e.stopPropagation()} // Impede o clique de fechar ao clicar dentro
+                        onClick={(e) => e.stopPropagation()} 
                         style={{
                             backgroundColor: 'white',
                             padding: '2rem',
